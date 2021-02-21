@@ -56,7 +56,57 @@ function customHttp() {
 // Init http module
 const http = customHttp();
 
+const newsService = (function () {
+    apiKey = '8dd71c05c0724b9cb72c982ff64d9925';
+    apiUrl = 'https://news-api-v2.herokuapp.com';
+
+    return {
+        topHeadlines(country = 'ua', cb) {
+            http.get(`${apiUrl}/top-headlines?country=${country}&apiKey=${apiKey}`)
+        },
+        everything(query, cb) {
+            http.get(`${apiUrl}/everything?q=${query}&apiKey=${apiKey}`, cb)
+        }
+    }
+})();
+
 //  init selects
 document.addEventListener('DOMContentLoaded', function () {
     M.AutoInit();
+    loadNews();
 });
+
+function loadNews() {
+    newsService.topHeadlines('ua', onGetResponse)
+}
+
+
+function onGetResponse(err, res) {
+    renderNews(res.articles);
+}
+
+
+function renderNews(news) {
+    const newsContainer = document.querySelector('.news-container .row');
+
+    news.forEach(newsItem => {
+        const el = newsTomplate(newsItem)
+    })
+}
+
+
+function newsTomplate({urlToImage, title, url, description}) {
+console.log(news);
+return`
+<div class = "col s12">
+<div class="card">
+<div class="card-image">
+    <img src="${urlToImage}">
+    <span class="card-title">${title || ''}</span>
+</div>
+<div class="card-content"></div>
+</div>
+
+</div>
+`;
+}
