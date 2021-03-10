@@ -1,0 +1,23 @@
+{
+  "name": "News-App",
+  "version": "1.0.0",
+  "description": "[ссылка](https://github.com/maxkolt/News-App)",
+  "main": "js/script.js",
+  "scripts": {
+    "eslint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxkolt/News-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxkolt/News-App/issues"
+  },
+  "homepage": "https://github.com/maxkolt/News-App#readme",
+  "devDependencies": {
+    "eslint": "^7.21.0"
+  }
+}
